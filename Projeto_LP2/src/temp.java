@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 //https://github.com/loredoleal/Projeto.git
+//http://docs.oracle.com/javase/tutorial/
 
 public class temp {
 	public static void main(String[] args) throws Exception {
