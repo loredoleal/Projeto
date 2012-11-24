@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 public class ClienteDAO {
 	private static final String selectFindCliente = "SELECT * FROM \"Cliente\" WHERE cod = ?";
 //---------------------------------//-------------------------------------------------
-	
 	public Cliente findCliente(int codigo){
 
 		Cliente c = null;
@@ -38,6 +37,20 @@ public class ClienteDAO {
 				
 	}
 //---------------------------------//-------------------------------------------------
+	private void atualizar() {
+		try {
+			Connection con = DriverManager.getConnection(
+					"jdbc:postgresql://localhost:5432/LP2", "postgres",
+					"senacrs");
+			
+			
+		} catch (Exception e) {
+			// FIXME: comunicar erro ao programa
+			e.printStackTrace();
+		}
+		// FIXME: fechar conexões
+	}
+//---------------------------------//-------------------------------------------------
 	public static void main(String[] args) {
 		ClienteDAO cliente = new ClienteDAO();
 		Cliente c = cliente.findCliente(1);
@@ -45,6 +58,7 @@ public class ClienteDAO {
 			System.out.println("Cliente não encontrado!");
 		} else {
 			System.out.println(c);
+			cliente.atualizar();
 		}
 	}
 
