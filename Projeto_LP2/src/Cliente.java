@@ -37,6 +37,10 @@ public class Cliente {
 	public String getObs() {
 		return obs;
 	}
-	
+	@Override
+	public String toString() {
+		return String.format("Cliente [cod=%d, nome=%s, end=%s, fone_1=%s, fone_2=%s, obs=%s]",
+				cod, nome, end, fone_1, fone_2, obs);
+	}
 	
 }
