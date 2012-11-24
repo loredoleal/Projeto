@@ -63,6 +63,7 @@ public class ClienteDAO {
 		} else {
 			System.out.println(c);
 			cliente.atualizar(c,"74747474");
+			//para mostrar atulaizado teria que utilizar findCliente novamente.
 		}
 	}
 
