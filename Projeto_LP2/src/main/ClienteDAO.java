@@ -1,10 +1,11 @@
+package main;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-
+//TODO INSERT
 
 public class ClienteDAO {
 	private static final String selectFindCliente = "SELECT * FROM cliente WHERE cod = ?";

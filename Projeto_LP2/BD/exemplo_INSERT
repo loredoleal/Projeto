@@ -1,4 +1,4 @@
-INSERT INTO "Equipamento" 
+INSERT INTO equipamento 
 (descricao, acessorios, defeitoreclamado,data_in, tecnico, 
 autorizado, pronto, defeitoencontrado, fkcliente, naloja) 
 VALUES ('CPU', '', 'Não liga',CURRENT_DATE,'Thiago',false,false,'em análise',1,true);

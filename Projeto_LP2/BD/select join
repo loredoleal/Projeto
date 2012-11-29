@@ -1,0 +1,1 @@
+SELECT * FROM equipamento CROSS JOIN cliente WHERE equipamento.fkcliente=cliente.cod
