@@ -1,5 +1,7 @@
 INSERT INTO "Equipamento" 
-(descricao,defeito,data_in,tecnico,autorizado,pronto,fkcliente) 
-VALUES ('CPU','Não liga',CURRENT_DATE,'Thiago',false,false,2);
+(descricao, acessorios, defeitoreclamado,data_in, tecnico, 
+autorizado, pronto, defeitoencontrado, fkcliente, naloja) 
+VALUES ('CPU', '', 'Não liga',CURRENT_DATE,'Thiago',false,false,'em análise',1,true);
 
 //Por ser serial a coluna "os" em Equipamento e "cod" em Cliente não devem ser mencionadas no INSERT.
+

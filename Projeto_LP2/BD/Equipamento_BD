@@ -7,14 +7,16 @@ CREATE TABLE "Equipamento"
   os serial NOT NULL,
   descricao character varying(40) NOT NULL,
   acessorios character varying(50),
-  defeito character varying(50) NOT NULL,
+  defeitoreclamado character varying(100) NOT NULL,
   data_in date NOT NULL,
   data_out date,
   tecnico character varying(10) NOT NULL,
   autorizado boolean NOT NULL,
   pronto boolean NOT NULL,
+  defeitoencontrado character varying(100),
   fkcliente integer NOT NULL,
   valor real,
+  naloja boolean NOT NULL,
   CONSTRAINT pk_codequipamento PRIMARY KEY (os ),
   CONSTRAINT fk_codcliente FOREIGN KEY (fkcliente)
       REFERENCES "Cliente" (cod) MATCH SIMPLE
