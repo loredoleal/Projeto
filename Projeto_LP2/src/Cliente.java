@@ -3,7 +3,7 @@ public class Cliente {
 	
 	private int cod;
 	private String nome;
-	private String end;
+	private String endereco;
 	private String fone_1;
 	private String fone_2;
 	private String obs;
@@ -13,7 +13,7 @@ public class Cliente {
 		super();
 		this.cod = cod;
 		this.nome = nome;
-		this.end = end;
+		this.endereco = end;
 		this.fone_1 = fone_1;
 		this.fone_2 = fone_2;
 		this.obs = obs;
@@ -25,8 +25,8 @@ public class Cliente {
 	public String getNome() {
 		return nome;
 	}
-	public String getEnd() {
-		return end;
+	public String getEndereco() {
+		return endereco;
 	}
 	public String getFone_1() {
 		return fone_1;
@@ -39,8 +39,8 @@ public class Cliente {
 	}
 	@Override
 	public String toString() {
-		return String.format("Cliente [cod=%d, nome=%s, end=%s, fone_1=%s, fone_2=%s, obs=%s]",
-				cod, nome, end, fone_1, fone_2, obs);
+		return String.format("Cliente [cod=%d, nome=%s, endereco=%s, fone_1=%s, fone_2=%s, obs=%s]",
+				cod, nome, endereco, fone_1, fone_2, obs);
 	}
 	
 }

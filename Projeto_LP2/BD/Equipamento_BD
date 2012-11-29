@@ -1,8 +1,8 @@
--- Table: "Equipamento"
+-- Table: equipamento
 
--- DROP TABLE "Equipamento";
+-- DROP TABLE equipamento;
 
-CREATE TABLE "Equipamento"
+CREATE TABLE equipamento
 (
   os serial NOT NULL,
   descricao character varying(40) NOT NULL,
@@ -19,11 +19,12 @@ CREATE TABLE "Equipamento"
   naloja boolean NOT NULL,
   CONSTRAINT pk_codequipamento PRIMARY KEY (os ),
   CONSTRAINT fk_codcliente FOREIGN KEY (fkcliente)
-      REFERENCES "Cliente" (cod) MATCH SIMPLE
+      REFERENCES cliente (cod) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "Equipamento"
+ALTER TABLE equipamento
   OWNER TO postgres;
+

@@ -1,12 +1,12 @@
--- Table: "Cliente"
+-- Table: cliente
 
--- DROP TABLE "Cliente";
+-- DROP TABLE cliente;
 
-CREATE TABLE "Cliente"
+CREATE TABLE cliente
 (
   cod serial NOT NULL,
   nome character varying(20) NOT NULL,
-  "end" character varying(50) NOT NULL,
+  endereco character varying(50) NOT NULL,
   fone_1 character(8) NOT NULL,
   fone_2 character(8),
   obs character(50),
@@ -15,5 +15,5 @@ CREATE TABLE "Cliente"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "Cliente"
+ALTER TABLE cliente
   OWNER TO postgres;

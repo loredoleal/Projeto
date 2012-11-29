@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 
 
 public class ClienteDAO {
-	private static final String selectFindCliente = "SELECT * FROM \"Cliente\" WHERE cod = ?";
-	private static final String updateCliente = "UPDATE \"Cliente\" SET fone_2=? WHERE cod = ?";
+	private static final String selectFindCliente = "SELECT * FROM cliente WHERE cod = ?";
+	private static final String updateCliente = "UPDATE cliente SET fone_2=? WHERE cod = ?";
 //---------------------------------//-------------------------------------------------
 	public Cliente findCliente(int codigo){
 
@@ -24,11 +24,11 @@ public class ClienteDAO {
 			if (rs.next()) {
 				int cod = rs.getInt("cod");
 				String nome = rs.getString("nome");
-				String end = rs.getString("end");
+				String endereco = rs.getString("endereco");
 				String fone_1 = rs.getString("fone_1");
 				String fone_2 = rs.getString("fone_2");
 				String obs = rs.getString("obs");
-				c = new Cliente(cod, nome, end, fone_1, fone_2, obs);
+				c = new Cliente(cod, nome, endereco, fone_1, fone_2, obs);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
