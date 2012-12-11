@@ -95,7 +95,6 @@ public class ClienteDAO {
 			System.out.println(c);
 			cliente.inserir(c, "Maria", "Rua b", "33110000", "33221111", "nenhuma");
 			//cliente.atualizar(c,"74747474");
-			//para mostrar atulaizado teria que utilizar findCliente novamente.
 		}
 	}
 
