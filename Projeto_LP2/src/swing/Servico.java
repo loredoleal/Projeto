@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import swing.action.JAboutMenuAction;
+import swing.action.JConsultarClienteMenuAction;
+import swing.action.JConsultarClientePanel;
 import swing.action.JInserirMenuAction;
 import swing.action.JSairMenuAction;
 
@@ -23,13 +25,15 @@ public class Servico {
 		CardLayout cards = new CardLayout();
 		JPanel principal = new JPanel(cards);
 		
+		JPanel consultarCliente = new JConsultarClientePanel(principal, cards);
 		JPanel inserir = new JInserirPanel(principal, cards);
 		JPanel vazio = new JPanel();
-		JLabel label = new JLabel("VTI Infirmática.");
+		JLabel label = new JLabel("Colocar tabela aqui.");
 		vazio.add(label);
 		
 		principal.add(vazio, PRINCIPAL);
 		principal.add(inserir, JInserirMenuAction.INSERIR1);
+		principal.add(consultarCliente, JConsultarClienteMenuAction.CONSULTAR1);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.setIconImage(new ImageIcon("pindorama.jpg").getImage());
@@ -39,16 +43,18 @@ public class Servico {
 		JMenuBar menubar = new JMenuBar();
 		JMenu file = new JMenu("Arquivo");
 		menubar.add(file);
-		JMenu cadastrar = new JMenu("Cadastrar");
-		menubar.add(cadastrar);
+		JMenu cliente = new JMenu("Cliente");
+		menubar.add(cliente);
 		JMenu help = new JMenu("Ajuda");
 		menubar.add(help);
 		
 		Action exitAction = new JSairMenuAction();
 		file.add(exitAction);
 		
+		Action clientesAction = new JConsultarClienteMenuAction(principal,cards);
+		cliente.add(clientesAction);
 		Action inserirAction = new JInserirMenuAction(principal,cards);
-		cadastrar.add(inserirAction);
+		cliente.add(inserirAction);
 		Action aboutAction = new JAboutMenuAction(frame);
 		help.add(aboutAction);
 		

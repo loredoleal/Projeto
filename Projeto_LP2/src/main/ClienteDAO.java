@@ -3,6 +3,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import caixa.Conta;
+import caixa.Operacao;
 
 
 
@@ -12,7 +18,9 @@ public class ClienteDAO {
 private static final String selectFindCliente = "SELECT * FROM cliente WHERE cod = ?";
 //private static final String updateCliente = "UPDATE cliente SET fone_2=? WHERE cod = ?";
 private static final String insertCliente = "INSERT INTO cliente(nome, endereco, fone_1, fone_2, obs) values (?, ?, ?, ?, ?)";
+
 //---------------------------------//-------------------------------------------------
+
 public Cliente findCliente(int codigo){
 
 	Cliente c = null;
@@ -40,7 +48,9 @@ public Cliente findCliente(int codigo){
 		return c;
 			
 }
+
 //---------------------------------//-------------------------------------------------
+
 public void inserir(String nome, String endereco, String fone_1, String fone_2, String obs) {
 	try {
 		Connection con = DriverManager.getConnection(
@@ -65,6 +75,7 @@ public void inserir(String nome, String endereco, String fone_1, String fone_2, 
 }
 
 //---------------------------------//-------------------------------------------------
+
 //	private void atualizar(Cliente c, String fone) {
 //		try {
 //			Connection con = DriverManager.getConnection(
@@ -81,16 +92,69 @@ public void inserir(String nome, String endereco, String fone_1, String fone_2, 
 //		}
 //		// FIXME: fechar conexões
 //	}
+
 //---------------------------------//-------------------------------------------------
+//TODO Adaptar esta coisa...
+public List<Operacao> consultarExtrato(Conta c) {
+
+	List<Operacao> ops = new ArrayList<Operacao>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	Connection con = null;
+	try {
+		con = DriverManager.getConnection(
+				"jdbc:postgresql://localhost:5432/caixa", "postgres",
+				"senacrs");
+
+		stmt = con.prepareStatement(selectConsultarExtrato);
+		stmt.setInt(1, c.getId());
+		rs = stmt.executeQuery();
+		while (rs.next()) {
+			int id = rs.getInt("id");
+			int conta = rs.getInt("conta");
+			double valor = rs.getDouble("valor");
+			Operacao op = new Operacao(id, conta, valor);
+			ops.add(op);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+		// FIXME: comunicar erro ao programa cliente
+	} finally {
+		try {
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (rs != null) {
+				stmt.close();
+			}
+			if (con != null) {
+				stmt.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// FIXME: comunicar erro ao programa cliente
+		}
+	}
+	return ops;
+}
+
+//---------------------------------//-------------------------------------------------
+
 public static void main(String[] args) {
+	int i=1;
+	
 	ClienteDAO cliente = new ClienteDAO();
-	Cliente c = cliente.findCliente(1);
-	cliente.inserir("Maria", "Rua b", "33110000", "33221111", "nenhuma");
-	if (c == null) {
-		System.out.println("Cliente não encontrado!");
+	cliente.inserir("João", "Rua baba", "99999999", "33221111", "");
+	while(i!=0){
+		Cliente c = cliente.findCliente(i);
+		if (c == null) {
+			i=0;
 		} else {
-			System.out.println(c);
+			System.out.println(c);i++;
 //			cliente.atualizar(c,"74747474");
 		}
 	}
+}
+
+
 }
