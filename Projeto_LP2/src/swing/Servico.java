@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import swing.action.JAboutMenuAction;
 import swing.action.JConsultarClienteMenuAction;
-import swing.action.JConsultarClientePanel;
 import swing.action.JInserirMenuAction;
 import swing.action.JSairMenuAction;
 

@@ -7,12 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import caixa.Conta;
-import caixa.Operacao;
 
 
 
-//TODO INSERT
+
 
 public class ClienteDAO {
 private static final String selectFindCliente = "SELECT * FROM cliente WHERE cod = ?";
@@ -95,26 +93,29 @@ public void inserir(String nome, String endereco, String fone_1, String fone_2, 
 
 //---------------------------------//-------------------------------------------------
 //TODO Adaptar esta coisa...
-public List<Operacao> consultarExtrato(Conta c) {
+public List<Cliente> consultarCliente(Cliente c) {
 
-	List<Operacao> ops = new ArrayList<Operacao>();
+	List<Cliente> cli = new ArrayList<Cliente>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	Connection con = null;
 	try {
 		con = DriverManager.getConnection(
-				"jdbc:postgresql://localhost:5432/caixa", "postgres",
-				"senacrs");
+				"jdbc:postgresql://localhost:5432/LP2", "postgres",
+				"2236");
 
-		stmt = con.prepareStatement(selectConsultarExtrato);
-		stmt.setInt(1, c.getId());
+		stmt = con.prepareStatement(selectFindCliente);
+		stmt.setInt(1, c.getCod());
 		rs = stmt.executeQuery();
 		while (rs.next()) {
-			int id = rs.getInt("id");
-			int conta = rs.getInt("conta");
-			double valor = rs.getDouble("valor");
-			Operacao op = new Operacao(id, conta, valor);
-			ops.add(op);
+			int cod = rs.getInt("cod");
+			String nome = rs.getString("nome");
+			String endereco = rs.getString("endereco");
+			String fone_1 = rs.getString("fone_1");
+			String fone_2 = rs.getString("fone_2");
+			String obs = rs.getString("obs");
+			Cliente c2 = new Cliente(cod, nome, endereco, fone_1, fone_2, obs);
+			cli.add(c2);
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -135,7 +136,7 @@ public List<Operacao> consultarExtrato(Conta c) {
 			// FIXME: comunicar erro ao programa cliente
 		}
 	}
-	return ops;
+	return cli;
 }
 
 //---------------------------------//-------------------------------------------------
@@ -144,7 +145,7 @@ public static void main(String[] args) {
 	int i=1;
 	
 	ClienteDAO cliente = new ClienteDAO();
-	cliente.inserir("João", "Rua baba", "99999999", "33221111", "");
+	//cliente.inserir("João", "Rua baba", "99999999", "33221111", "");
 	while(i!=0){
 		Cliente c = cliente.findCliente(i);
 		if (c == null) {
@@ -152,6 +153,7 @@ public static void main(String[] args) {
 		} else {
 			System.out.println(c);i++;
 //			cliente.atualizar(c,"74747474");
+			System.out.println(cliente.consultarCliente(c));
 		}
 	}
 }
