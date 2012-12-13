@@ -9,8 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import swing.action.JInserirPanelCloseAction;
-import main.Cliente;
+//import main.Cliente;
 import main.ClienteDAO;
+import main.Equipamento;
 
 @SuppressWarnings("serial")
 public class JConsultarClientePanel extends JPanel {
@@ -18,7 +19,7 @@ public class JConsultarClientePanel extends JPanel {
 
 	public JConsultarClientePanel(JPanel principal, CardLayout cards) {
 		dados = new JTextArea(20, 60);
-		dados.setEditable(false);
+		dados.setEditable(true);
 		add(dados);
 		add(new JButton(new JInserirPanelCloseAction(principal, cards)));
 	}
@@ -34,13 +35,11 @@ public class JConsultarClientePanel extends JPanel {
 			return;
 		}
 		System.out.printf("JInserirPanel::setVisible %b\n", aFlag);
-		ClienteDAO cliente2 = new ClienteDAO();
+		ClienteDAO equipamento2 = new ClienteDAO();
 		String s = "";
-		List<Cliente> cli = cliente2.consultarClientes();
-		for (Cliente cliente : cli) {
-			s += String.format("%S // %S // %S // %S // %S\n",
-					cliente.getNome(), cliente.getEndereco(),
-					cliente.getFone_1(), cliente.getFone_2(), cliente.getObs());
+		List<Equipamento> equ = equipamento2.consultarEquipamento();
+		for (Equipamento equipamento : equ) {
+			s += String.format("%S \n", equipamento.toString());
 		}
 		dados.setText(s);
 	}

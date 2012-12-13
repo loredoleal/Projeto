@@ -15,8 +15,30 @@ public class Equipamento {
 	private boolean pronto;
 	private String defeitoencontrado;
 	private int fkcliente;
+	private String nomecli;
 	private float valor;
 	private boolean naloja;
+	
+	public Equipamento(int os, String descricao, String acessorios,
+			String defeitoreclamado, Date data_in, Date data_out,
+			String tecnico, boolean autorizado, boolean pronto,
+			String defeitoencontrado, int fkcliente, String nomecli, float valor, boolean naloja) {
+		super();
+		this.os = os;
+		this.descricao = descricao;
+		this.acessorios = acessorios;
+		this.defeitoreclamado = defeitoreclamado;
+		this.data_in = data_in;
+		this.data_out = data_out;
+		this.tecnico = tecnico;
+		this.autorizado = autorizado;
+		this.pronto = pronto;
+		this.defeitoencontrado = defeitoencontrado;
+		this.fkcliente = fkcliente;
+		this.nomecli = nomecli;
+		this.valor = valor;
+		this.naloja = naloja;
+	}
 	
 	public Equipamento(int os, String descricao, String acessorios,
 			String defeitoreclamado, Date data_in, Date data_out,
@@ -81,6 +103,16 @@ public class Equipamento {
 	public int getFkcliente() {
 		return fkcliente;
 	}
+	
+	public String getNomecli() {
+		return nomecli;
+	}
+	
+	
+
+	public void setNomecli(String nomecli) {
+		this.nomecli = nomecli;
+	}
 
 	public float getValor() {
 		return valor;
@@ -89,5 +121,19 @@ public class Equipamento {
 	public boolean isNaloja() {
 		return naloja;
 	}
+
+	@Override
+	public String toString() {
+		return "Equipamento [os=" + os + ", descricao=" + descricao
+				+ ", acessorios=" + acessorios + ", defeitoreclamado="
+				+ defeitoreclamado + ", data_in=" + data_in + ", data_out="
+				+ data_out + ", tecnico=" + tecnico + ", autorizado="
+				+ autorizado + ", pronto=" + pronto + ", defeitoencontrado="
+				+ defeitoencontrado + ", fkcliente=" + fkcliente + ", nomecli="
+				+ nomecli + ", valor=" + valor + ", naloja=" + naloja + "]";
+	}
+
+	
+	
 	
 }
